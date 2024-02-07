@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use Illuminate\Routing\RedirectController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +21,4 @@ Route::get('/cart', [RedirectController::class, 'cart']);
 Auth::routes();
 
 Route::get('/', [RedirectController::class, 'index'])->name('index');
+Route::get('/cart', [RedirectController::class, 'cart'])->name('cart');
