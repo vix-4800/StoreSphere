@@ -20,4 +20,4 @@ Route::get('/cart', [RedirectController::class, 'cart']);
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [RedirectController::class, 'index'])->name('index');
