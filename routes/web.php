@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [RedirectController::class, 'index']);
-Route::get('/cart', [RedirectController::class, 'cart']);
-
 Auth::routes();
 
 Route::get('/', [RedirectController::class, 'index'])->name('index');
 Route::get('/cart', [RedirectController::class, 'cart'])->name('cart');
+Route::post('/cart/add/{itemId}', [CartController::class, 'addToCart'])->name('cart.add');
