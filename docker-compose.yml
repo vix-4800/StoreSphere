@@ -71,12 +71,15 @@ services:
             dockerfile: php.Dockerfile
             context: docker/dockerfiles
         container_name: artisan
+        networks:
+            - storesphere
         volumes:
             - ./:/var/www/html
         entrypoint: ["php", "/var/www/html/artisan"]
 
 networks:
     storesphere:
+        driver: "bridge"
 
 volumes:
     database: ~
