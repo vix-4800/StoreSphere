@@ -21,25 +21,37 @@
                     <a class="text-decoration-none fs-4 d-block text-center mb-3 text-dark" href="{{route("index")}}">
                         НА ГЛАВНУЮ
                     </a>
+
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Логин</label>
-                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required autofocus>
+                        <label for="exampleInputEmail1" class="form-label">
+                            Логин
+                        </label>
+                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required autofocus autocomplete="email">
+                        @error('email')
                         <div class="text-danger mt-2">
                             Пожалуйста, введите корректный логин.
                         </div>
+                        @enderror
                     </div>
+
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                        <label for="exampleInputPassword1" class="form-label">
+                            Пароль
+                        </label>
                         <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
+                        @error('password')
                         <div class="text-danger mt-2">
                             Пожалуйста, введите пароль.
                         </div>
+                        @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Войти</button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Войти
+                    </button>
                 </form>
             </div>
         </div>
-
     </main>
 </body>
 
