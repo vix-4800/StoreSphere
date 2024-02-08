@@ -1,0 +1,82 @@
+version: "3"
+
+services:
+    webserver:
+        image: nginx
+        container_name: webserver
+        ports:
+            - "8000:80"
+        restart: always
+        volumes:
+            - ./docker/nginx:/etc/nginx/conf.d
+            - ./:/var/www/html
+        networks:
+            - storesphere
+        depends_on:
+            - php
+            - database
+
+    database:
+        image: mysql:8.3.0
+        container_name: database
+        restart: unless-stopped
+        volumes:
+            - database:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root_password
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+        networks:
+            - storesphere
+
+    php:
+        build:
+            dockerfile: php.Dockerfile
+            context: docker/dockerfiles
+            target: php
+        container_name: php
+        volumes:
+            - ./:/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - database
+        ports:
+            - "9000:9000"
+        networks:
+            - storesphere
+
+    composer:
+        build:
+            dockerfile: composer.Dockerfile
+            context: docker/dockerfiles
+            target: composer
+        container_name: composer
+        volumes:
+            - ./:/var/www/html
+
+    node:
+        build:
+            dockerfile: node.Dockerfile
+            context: docker/dockerfiles
+            target: node
+        container_name: node
+        volumes:
+            - ./:/var/www/html
+
+    artisan:
+        build:
+            dockerfile: php.Dockerfile
+            context: docker/dockerfiles
+        container_name: artisan
+        volumes:
+            - ./:/var/www/html
+        entrypoint: ["php", "/var/www/html/artisan"]
+
+networks:
+    storesphere:
+
+volumes:
+    database: ~
