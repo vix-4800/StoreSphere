@@ -36,3 +36,4 @@ If you don't have **make** installed:
 5. Generate Laravel key - `docker-compose run --rm artisan key:generate`
 6. Install node dependencies - `docker-compose run --rm node install`
 7. Run Laravel migrations - `docker-compose run --rm artisan migrate`
+8. Run seeders for the database - `docker-compose run --rm artisan db:seed`
