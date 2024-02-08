@@ -10,9 +10,14 @@
 4. Install node dependencies - `npm install`
 5. Generate Laravel application key - `php artisan key:generate`
 6. Run migrations - `php artisan migrate`
-7. Start the app - `php artisan serve` and `npm run dev`
+7. Run seeders for the database - `php artisan db:seed`
+8. Start the app - `php artisan serve` and `npm run dev`
 
 You can access the application at http://127.0.0.1:8000
+Test login and password:
+
+-   test1@example.com : 12345qwert
+-   test2@example.com : 12345qwert
 
 ### With Docker
 
