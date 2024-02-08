@@ -14,10 +14,9 @@ class UserSeeder extends Seeder
         \App\Models\User::factory(15)->create();
 
         \App\Models\User::create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => bcrypt('12345qwerty'),
-            'points' => 1000,
+            'email' => 'test1@example.com',
+            'password' => bcrypt('12345qwert'),
+            'points' => 500,
         ]);
     }
 }

@@ -23,10 +23,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
             'email' => fake()->email(),
-            'password' => static::$password ??= bcrypt('password'),
-            'points' => random_int(0, 999),
+            'password' => static::$password ??= bcrypt(Str::random(10)),
+            'points' => random_int(0, 9999),
         ];
     }
 
