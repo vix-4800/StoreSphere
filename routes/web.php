@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +17,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [RedirectController::class, 'index'])->name('index');
-Route::get('/cart', [RedirectController::class, 'cart'])->name('cart');
-Route::post('/cart/add/{itemId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [RedirectController::class, 'cart'])->middleware('auth')->name('cart');
