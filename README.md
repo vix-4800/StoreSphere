@@ -1,5 +1,11 @@
 # **StoreSphere**
 
+<p align="center">
+    <a href='https://github.com/vix-4800/StoreSphere'>
+        <img src='https://img.shields.io/badge/Type-Educational-blue.svg'>
+    </a>
+</p>
+
 ## Installation
 
 ### Without Docker
@@ -13,7 +19,7 @@
 7. Run seeders for the database - `php artisan db:seed`
 8. Start the app - `php artisan serve` and `npm run dev`
 
-You can access the application at http://127.0.0.1:8000
+You can access the application at http://localhost:8000
 Test login and password:
 
 -   test1@example.com : 12345qwert
