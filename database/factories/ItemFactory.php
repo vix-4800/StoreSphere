@@ -20,8 +20,9 @@ class ItemFactory extends Factory
     {
         return [
             'name' => 'Шоссейный велосипед BMC Roadmachine 01 Five Ultegra Di2 (2023)',
-            'price' => random_int(1000, 99999),
-            'image_path' => public_path('images/item.webp'),
+            'price' => random_int(15000, 999999),
+            'image_path' => 'images/item.webp',
+            'has_discount' => random_int(0, 1),
         ];
     }
 }
