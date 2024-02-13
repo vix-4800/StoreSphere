@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Item|null $item
  * @property-read \App\Models\User|null $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem query()
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class CartItem extends Model
@@ -39,13 +41,14 @@ class CartItem extends Model
     protected $fillable = [
         'user_id',
         'item_id',
-        'quantity'
+        'quantity',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     public function item()
     {
         return $this->belongsTo(Item::class);

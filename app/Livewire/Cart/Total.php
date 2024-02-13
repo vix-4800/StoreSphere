@@ -8,7 +8,9 @@ use Livewire\Component;
 class Total extends Component
 {
     public $sumWithoutDiscount = 0;
+
     public $sumWithDiscount;
+
     public int $totalDiscount;
 
     public function mount()

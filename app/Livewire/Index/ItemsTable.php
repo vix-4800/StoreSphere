@@ -4,8 +4,6 @@ namespace App\Livewire\Index;
 
 use App\Models\CartItem;
 use App\Models\Item;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -43,7 +41,7 @@ class ItemsTable extends Component
             CartItem::create([
                 'user_id' => auth()->id(),
                 'item_id' => $itemId,
-                'quantity' => 1
+                'quantity' => 1,
             ]);
         }
 

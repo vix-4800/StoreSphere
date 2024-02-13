@@ -8,6 +8,7 @@ use Livewire\Component;
 class ItemsList extends Component
 {
     public $items;
+
     public int $totalDiscount;
 
     public function mount()

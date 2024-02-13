@@ -3,15 +3,18 @@
 namespace App\Livewire\Cart;
 
 use App\Models\CartItem;
-use App\Models\Item;
 use Livewire\Component;
 
 class ItemCard extends Component
 {
     public $item;
+
     public $cardItem;
+
     public int $price1;
+
     public int $price2;
+
     public int $totalDiscount;
 
     public function mount(int $itemId, int $totalDiscount)

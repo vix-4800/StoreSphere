@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $image_path
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \Database\Factories\ItemFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
@@ -25,8 +26,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereUpdatedAt($value)
+ *
  * @property bool $has_discount
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereHasDiscount($value)
+ *
  * @mixin \Eloquent
  */
 class Item extends Model
@@ -42,7 +46,7 @@ class Item extends Model
         'name',
         'price',
         'image_path',
-        'has_discount'
+        'has_discount',
     ];
 
     /**
@@ -51,7 +55,7 @@ class Item extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'has_discount' => 'boolean'
+        'has_discount' => 'boolean',
     ];
 
     public function cartItems(): HasMany
