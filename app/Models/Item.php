@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Item whereHasDiscount($value)
  *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CartItem> $cartItems
+ * @property-read int|null $cart_items_count
+ *
  * @mixin \Eloquent
  */
 class Item extends Model
@@ -58,6 +61,9 @@ class Item extends Model
         'has_discount' => 'boolean',
     ];
 
+    /**
+     * Relations with the CartItem model
+     */
     public function cartItems(): HasMany
     {
         return $this->hasMany(CartItem::class);

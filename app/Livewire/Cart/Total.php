@@ -7,13 +7,29 @@ use Livewire\Component;
 
 class Total extends Component
 {
+    /**
+     * Purchase sum without discount
+     *
+     * @var int
+     */
     public $sumWithoutDiscount = 0;
 
+    /**
+     * Purchase sum with discount
+     *
+     * @var int
+     */
     public $sumWithDiscount;
 
+    /**
+     * Discount value (in percent)
+     */
     public int $totalDiscount;
 
-    public function mount()
+    /**
+     * Mount function
+     */
+    public function mount(): void
     {
         $cartItems = auth()->user()->cartItems()->with('item')->get();
 
@@ -49,11 +65,19 @@ class Total extends Component
         }
     }
 
-    public function render()
+    /**
+     * Render function
+     */
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.cart.total');
     }
 
+    /**
+     * Confirm the purchase
+     *
+     * @return void
+     */
     public function order()
     {
         // dd(['response' => 'ok']);

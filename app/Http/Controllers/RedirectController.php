@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 class RedirectController extends Controller
 {
-    public function index()
+    /**
+     * Display the main index page
+     */
+    public function index(): \Illuminate\Contracts\View\View
     {
         return view('pages.index');
     }
 
-    public function cart()
+    /**
+     * Display the shopping cart page
+     */
+    public function cart(): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
     {
         return auth()->check() ?
             view('pages.cart') :

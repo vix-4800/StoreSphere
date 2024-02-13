@@ -4,6 +4,7 @@ namespace App\Livewire\Index;
 
 use App\Models\CartItem;
 use App\Models\Item;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -12,14 +13,28 @@ class ItemsTable extends Component
 {
     use WithPagination;
 
-    public $userItems;
+    /**
+     * User items added to the cart
+     */
+    public Collection|array $userItems;
 
-    protected $paginationTheme = 'bootstrap';
+    /**
+     * Pagination theme
+     */
+    protected string $paginationTheme = 'bootstrap';
 
-    protected $perPage = 12;
+    /**
+     * Items per page
+     */
+    protected int $perPage = 12;
 
+    /**
+     * Mount function
+     *
+     * @return void
+     */
     #[On('item-quantity-change')]
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         $this->userItems = auth()->check() ?
             auth()->user()->cartItems->pluck('item_id') :
@@ -30,7 +45,12 @@ class ItemsTable extends Component
         ]);
     }
 
-    public function add(int $itemId)
+    /**
+     * Add a new item to the cart or increase the quantity
+     *
+     * @param  int  $itemId  The item ID
+     */
+    public function add(int $itemId): void
     {
         $item = CartItem::firstWhere('item_id', $itemId);
 
@@ -48,7 +68,12 @@ class ItemsTable extends Component
         $this->dispatch('item-quantity-change');
     }
 
-    public function remove(int $itemId)
+    /**
+     * Remove an item from the cart or decrease the quantity
+     *
+     * @param  int  $itemId  The item ID
+     */
+    public function remove(int $itemId): void
     {
         $item = CartItem::firstWhere('item_id', $itemId);
 

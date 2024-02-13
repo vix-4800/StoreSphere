@@ -3,15 +3,40 @@
 namespace App\Livewire\Cart;
 
 use App\Models\CartItem;
+use App\Models\Item;
 use Livewire\Component;
 
+/**
+ * Represents a single item in user cart
+ */
 class ItemCard extends Component
 {
+    public Item $item;
+
+    /**
+     * Item quantity from user cart
+     *
+     * @var [type]
+     */
     public int $quantity;
+
+    /**
+     * Item price without discount
+     *
+     * @var integer
+     */
     public int $price1;
 
+    /**
+     * Item price with discount
+     *
+     * @var integer
+     */
     public int $price2;
 
+    /**
+     * Mount function
+     */
     public function mount(int $itemId): void
     {
         $cardItem = CartItem::find($itemId);
@@ -31,6 +56,11 @@ class ItemCard extends Component
         }
     }
 
+    /**
+     * Render function
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function render()
     {
         return view('livewire.cart.item-card');

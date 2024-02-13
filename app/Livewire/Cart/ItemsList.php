@@ -7,11 +7,20 @@ use Livewire\Component;
 
 class ItemsList extends Component
 {
+    /**
+     * User items from the cart
+     */
     public $items;
 
+    /**
+     * Discount for all items
+     */
     public int $totalDiscount;
 
-    public function mount()
+    /**
+     * Mount function
+     */
+    public function mount(): void
     {
         $this->items = auth()->user()->cartItems->where('quantity', '>', 0);
 
@@ -34,7 +43,10 @@ class ItemsList extends Component
         }
     }
 
-    public function render()
+    /**
+     * Render function
+     */
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.cart.items-list');
     }
