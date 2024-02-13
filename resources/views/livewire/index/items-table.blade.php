@@ -48,39 +48,5 @@
         </div>
     </div>
 
-    <nav aria-label="Page navigation" role="navigation">
-        <ul class="pagination my-5 d-flex justify-content-center">
-            <li class="page-item">
-                <button class="page-link" aria-label="Previous">
-                    <span aria-hidden="true">
-                        «
-                    </span>
-                </button>
-            </li>
-
-            <li class="page-item">
-                <button class="page-link">
-                    1
-                </button>
-            </li>
-
-            <li class="page-item">
-                <button class="page-link">
-                    2
-                </button>
-            </li>
-            <li class="page-item">
-                <button class="page-link">
-                    3
-                </button>
-            </li>
-            <li class="page-item">
-                <button class="page-link" aria-label="Next">
-                    <span aria-hidden="true">
-                        »
-                    </span>
-                </button>
-            </li>
-        </ul>
-    </nav>
+    {{$items->links()}}
 </div>

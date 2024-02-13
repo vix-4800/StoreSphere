@@ -4,17 +4,21 @@ namespace App\Livewire\Index;
 
 use App\Models\CartItem;
 use App\Models\Item;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ItemsTable extends Component
 {
+    use WithPagination;
+
     public $userItems;
 
-    public function mount()
-    {
+    protected $paginationTheme = 'bootstrap';
+
     protected $perPage = 12;
-    }
 
     #[On('item-quantity-change')]
     public function render()
