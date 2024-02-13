@@ -9,14 +9,11 @@ class CartIcon extends Component
 {
     public $items;
 
-    public function mount()
-    {
-        $this->items = auth()->check() ?  auth()->user()->cartItems : collect();
-    }
-
-    #[On('item-quantity-changed')]
+    #[On('item-quantity-change')]
     public function render()
     {
+        $this->items = auth()->check() ?  auth()->user()->cartItems : collect();
+
         return view('livewire.cart-icon');
     }
 }
