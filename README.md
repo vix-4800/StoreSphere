@@ -53,7 +53,7 @@
     ./vendor/bin/sail npm run dev
     ```
 
-Use `./vendor/bin/sail stop` to stop the server
+Use `./vendor/bin/sail stop` to stop the server or `./vendor/bin/sail down` to remove containers
 
 ### Without Docker
 
