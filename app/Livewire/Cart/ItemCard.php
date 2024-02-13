@@ -15,22 +15,16 @@ class ItemCard extends Component
 
     /**
      * Item quantity from user cart
-     *
-     * @var [type]
      */
     public int $quantity;
 
     /**
      * Item price without discount
-     *
-     * @var integer
      */
     public int $price1;
 
     /**
      * Item price with discount
-     *
-     * @var integer
      */
     public int $price2;
 

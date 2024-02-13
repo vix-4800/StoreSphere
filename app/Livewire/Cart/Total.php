@@ -9,17 +9,13 @@ class Total extends Component
 {
     /**
      * Purchase sum without discount
-     *
-     * @var int
      */
-    public $sumWithoutDiscount = 0;
+    public int $sumWithoutDiscount = 0;
 
     /**
      * Purchase sum with discount
-     *
-     * @var int
      */
-    public $sumWithDiscount;
+    public int $sumWithDiscount;
 
     /**
      * Discount value (in percent)
