@@ -11,6 +11,8 @@ class RedirectController extends Controller
 
     public function cart()
     {
-        return auth()->check() ? view('pages.cart') : redirect()->route('login');
+        return auth()->check() ?
+            view('pages.cart') :
+            redirect()->route('login');
     }
 }

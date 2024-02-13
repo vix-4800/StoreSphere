@@ -12,7 +12,9 @@ class CartIcon extends Component
     #[On('item-quantity-change')]
     public function render()
     {
-        $this->items = auth()->check() ? auth()->user()->cartItems : collect();
+        $this->items = auth()->check() ?
+            auth()->user()->cartItems :
+            collect();
 
         return view('livewire.cart-icon');
     }
