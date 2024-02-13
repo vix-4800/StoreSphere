@@ -42,11 +42,11 @@ class ItemCard extends Component
         $cardItem = CartItem::find($itemId);
 
         $this->quantity = $cardItem->quantity;
-        $this->item = $this->cardItem->item;
+        $this->item = $cardItem->item;
         $this->price1 = $this->item->price;
 
         if ($this->item->has_discount) {
-            if (auth()->user()->points > $this->price1 * $this->cardItem->quantity) {
+            if (auth()->user()->points > $this->price1 * $cardItem->quantity) {
                 $this->price2 = 0;
             } else {
                 $this->price2 = ($this->price1 * $this->quantity - auth()->user()->points) / $this->quantity;
