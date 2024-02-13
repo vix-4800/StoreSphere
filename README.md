@@ -27,28 +27,27 @@
     docker run --rm -v $(pwd):/opt -w /opt laravelsail/php83-composer composer install --no-progress --no-interaction
     ```
 
-4. Install node dependencies
+4. Start Sail
+
+    ```
+    ./vendor/bin/sail up -d
+    ```
+
+5. Install node dependencies
 
     ```
     ./vendor/bin/sail npm install
     ```
 
-5. Run migrations for the database
+6. Generate Laravel application key
 
     ```
-    ./vendor/bin/sail artisan migrate
+    ./vendor/bin/sail artisan key:generate
     ```
 
-6. Run seeders for the database
+7. Start npm
 
     ```
-    ./vendor/bin/sail artisan db:seed
-    ```
-
-7. Start the app
-
-    ```
-    ./vendor/bin/sail up -d
     ./vendor/bin/sail npm run dev
     ```
 
@@ -74,19 +73,14 @@ Use `./vendor/bin/sail stop` to stop the server
     php artisan key:generate
     ```
 
-6. Run migrations for the database
+6. Run migrations and seeders for the database
 
     ```
-    php artisan migrate
-    ```
-
-7. Run seeders for the database
-
-    ```
+    php artisan migrate && \
     php artisan db:seed
     ```
 
-8. Start the app
+7. Start the app
 
     ```
     php artisan serve
