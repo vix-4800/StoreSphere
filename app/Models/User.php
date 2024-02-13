@@ -73,7 +73,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Relations with the CartItem model
+     * Define a relationship with the CartItem model.
      */
     public function cartItems(): HasMany
     {

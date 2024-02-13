@@ -8,12 +8,12 @@ use Livewire\Component;
 class ItemsList extends Component
 {
     /**
-     * User items from the cart
+     * User items added to the cart
      */
     public $items;
 
     /**
-     * Discount for all items
+     * The total discount
      */
     public int $totalDiscount;
 

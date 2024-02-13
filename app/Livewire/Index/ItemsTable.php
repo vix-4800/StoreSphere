@@ -24,7 +24,7 @@ class ItemsTable extends Component
     protected string $paginationTheme = 'bootstrap';
 
     /**
-     * Items per page
+     * The number of items to display per page.
      */
     protected int $perPage = 12;
 
@@ -46,9 +46,9 @@ class ItemsTable extends Component
     }
 
     /**
-     * Add a new item to the cart or increase the quantity
+     * Add an item to the user's cart
      *
-     * @param  int  $itemId  The item ID
+     * @param  int  $itemId  The ID of the item
      */
     public function add(int $itemId): void
     {
@@ -69,9 +69,9 @@ class ItemsTable extends Component
     }
 
     /**
-     * Remove an item from the cart or decrease the quantity
+     * Remove an item from the user's cart
      *
-     * @param  int  $itemId  The item ID
+     * @param  int  $itemId  The ID of the item
      */
     public function remove(int $itemId): void
     {

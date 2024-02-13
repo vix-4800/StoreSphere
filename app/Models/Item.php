@@ -62,7 +62,7 @@ class Item extends Model
     ];
 
     /**
-     * Relations with the CartItem model
+     * Define a relationship with the CartItem model.
      */
     public function cartItems(): HasMany
     {

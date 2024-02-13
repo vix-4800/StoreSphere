@@ -46,7 +46,7 @@ class CartItem extends Model
     ];
 
     /**
-     * Relations with the User model
+     * Define a relationship with the User model.
      */
     public function user(): BelongsTo
     {
@@ -54,7 +54,7 @@ class CartItem extends Model
     }
 
     /**
-     * Relations with the Item model
+     * Define a relationship with the Item model.
      */
     public function item(): BelongsTo
     {

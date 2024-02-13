@@ -8,17 +8,17 @@ use Livewire\Component;
 class Total extends Component
 {
     /**
-     * Purchase sum without discount
+     * The total sum without discount
      */
     public int $sumWithoutDiscount = 0;
 
     /**
-     * Purchase sum with discount
+     * The total sum with discount
      */
     public int $sumWithDiscount;
 
     /**
-     * Discount value (in percent)
+     * The total discount
      */
     public int $totalDiscount;
 
@@ -27,6 +27,7 @@ class Total extends Component
      */
     public function mount(): void
     {
+        // Retrieve the user's cart items and calculate the total sum without discount
         $cartItems = auth()->user()->cartItems()->with('item')->get();
 
         foreach ($cartItems as $cartItem) {
@@ -35,6 +36,7 @@ class Total extends Component
 
         $points = auth()->user()->points;
         if ($points > 0) {
+            // Calculate the total discountable sum in the cart
             $discountable = 0;
             foreach ($cartItems as $cartItem) {
                 if ($cartItem->item->has_discount) {
@@ -47,6 +49,7 @@ class Total extends Component
                     $points = $discountable;
                 }
 
+                // Apply discount
                 $this->sumWithDiscount = $this->sumWithoutDiscount - $points;
 
                 try {
