@@ -1,85 +1,60 @@
 version: "3"
 
 services:
-    webserver:
-        image: nginx
-        container_name: webserver
+    laravel.test:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.3
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: "${WWWGROUP}"
+        image: sail-8.3/app
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         ports:
-            - "8000:80"
-        restart: always
-        volumes:
-            - ./docker/nginx:/etc/nginx/conf.d
-            - ./:/var/www/html
-        networks:
-            - storesphere
-        depends_on:
-            - php
-            - database
-
-    database:
-        image: mysql:8.3.0
-        container_name: database
-        restart: unless-stopped
-        volumes:
-            - database:/var/lib/mysql
-        ports:
-            - "3306:3306"
+            - "${APP_PORT:-80}:80"
+            - "${VITE_PORT:-5173}:${VITE_PORT:-5173}"
         environment:
-            - MYSQL_ROOT_PASSWORD=root_password
-            - MYSQL_DATABASE=${DB_DATABASE}
-            - MYSQL_USER=${DB_USERNAME}
-            - MYSQL_PASSWORD=${DB_PASSWORD}
+            WWWUSER: "${WWWUSER}"
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: "${SAIL_XDEBUG_MODE:-off}"
+            XDEBUG_CONFIG: "${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}"
+            IGNITION_LOCAL_SITES_PATH: "${PWD}"
+        volumes:
+            - ".:/var/www/html"
         networks:
             - storesphere
-
-    php:
-        build:
-            dockerfile: php.Dockerfile
-            context: docker/dockerfiles
-            target: php
-        container_name: php
-        volumes:
-            - ./:/var/www/html
-        working_dir: /var/www/html
         depends_on:
-            - database
+            - mysql
+
+    mysql:
+        image: "mysql/mysql-server:8.0"
         ports:
-            - "9000:9000"
+            - "${FORWARD_DB_PORT:-3306}:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_ROOT_HOST: "%"
+            MYSQL_DATABASE: "${DB_DATABASE}"
+            MYSQL_USER: "${DB_USERNAME}"
+            MYSQL_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - "sail-mysql:/var/lib/mysql"
+            - "./vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh"
         networks:
             - storesphere
-
-    composer:
-        build:
-            dockerfile: composer.Dockerfile
-            context: docker/dockerfiles
-            target: composer
-        container_name: composer
-        volumes:
-            - ./:/var/www/html
-
-    node:
-        build:
-            dockerfile: node.Dockerfile
-            context: docker/dockerfiles
-            target: node
-        container_name: node
-        volumes:
-            - ./:/var/www/html
-
-    artisan:
-        build:
-            dockerfile: php.Dockerfile
-            context: docker/dockerfiles
-        container_name: artisan
-        networks:
-            - storesphere
-        volumes:
-            - ./:/var/www/html
-        entrypoint: ["php", "/var/www/html/artisan"]
+        healthcheck:
+            test:
+                - CMD
+                - mysqladmin
+                - ping
+                - "-p${DB_PASSWORD}"
+            retries: 3
+            timeout: 5s
 
 networks:
     storesphere:
-        driver: "bridge"
+        driver: bridge
 
 volumes:
-    database: ~
+    sail-mysql:
+        driver: local
