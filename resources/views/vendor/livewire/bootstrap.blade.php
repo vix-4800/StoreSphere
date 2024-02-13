@@ -12,8 +12,8 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
 
 <div>
     @if ($paginator->hasPages())
-        <nav>
-            <ul class="pagination">
+        <nav role="pagination" aria-label="Page navigation">
+            <ul class="pagination my-5 d-flex justify-content-center">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
