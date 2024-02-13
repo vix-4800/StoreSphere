@@ -7,19 +7,16 @@ use Livewire\Component;
 
 class ItemCard extends Component
 {
-    public $item;
-
-    public $cardItem;
-
+    public int $quantity;
     public int $price1;
 
     public int $price2;
 
-    public int $totalDiscount;
-
-    public function mount(int $itemId, int $totalDiscount)
+    public function mount(int $itemId): void
     {
-        $this->cardItem = CartItem::find($itemId);
+        $cardItem = CartItem::find($itemId);
+
+        $this->quantity = $cardItem->quantity;
         $this->item = $this->cardItem->item;
         $this->price1 = $this->item->price;
 
@@ -27,7 +24,7 @@ class ItemCard extends Component
             if (auth()->user()->points > $this->price1 * $this->cardItem->quantity) {
                 $this->price2 = 0;
             } else {
-                $this->price2 = ($this->price1 * $this->cardItem->quantity - auth()->user()->points) / $this->cardItem->quantity;
+                $this->price2 = ($this->price1 * $this->quantity - auth()->user()->points) / $this->quantity;
             }
         } else {
             $this->price2 = $this->price1;
