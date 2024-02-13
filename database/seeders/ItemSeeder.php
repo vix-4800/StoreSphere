@@ -11,6 +11,6 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Item::factory(12)->create();
+        \App\Models\Item::factory(80)->create();
     }
 }

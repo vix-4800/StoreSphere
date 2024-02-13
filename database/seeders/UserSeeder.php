@@ -18,5 +18,11 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12345qwert'),
             'points' => 500,
         ]);
+
+        \App\Models\User::create([
+            'email' => 'test2@example.com',
+            'password' => bcrypt('12345qwert'),
+            'points' => 1200,
+        ]);
     }
 }
