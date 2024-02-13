@@ -4,6 +4,9 @@
     <a href='https://github.com/vix-4800/StoreSphere'>
         <img src='https://img.shields.io/badge/Type-Educational-blue.svg'>
     </a>
+    <a href='https://opensource.org/license/MIT'>
+        <img src='https://img.shields.io/badge/License-MIT-yellow.svg'>
+    </a>
 </p>
 
 ## Installation
