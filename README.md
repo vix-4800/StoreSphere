@@ -1,4 +1,4 @@
-# **StoreSphere**
+# <p align='center' style='margin: 0'>StoreSphere</p>
 
 <p align="center">
     <a href='https://github.com/vix-4800/StoreSphere'>
@@ -11,17 +11,19 @@
 
 ## Installation
 
-1. Clone this repository
+1. Clone the Repository
 
     ```
     git clone https://github.com/vix-4800/StoreSphere.git
     ```
 
-2. Create _.env_ file and configure your environment (copy and rename .env.example)
+2. Configure Environment
+
+    Create a .env file by copying and renaming .env.example. Configure your environment settings. Uncomment DB_HOST for Docker and comment it for basic installation.
 
 ### With Docker and Sail
 
-3. Install Laravel dependencies
+3. Install Laravel Dependencies
 
     ```
     docker run --rm -v $(pwd):/opt -w /opt laravelsail/php83-composer composer install --no-progress --no-interaction
@@ -33,19 +35,19 @@
     ./vendor/bin/sail up -d
     ```
 
-5. Install node dependencies
+5. Install Node Dependencies
 
     ```
     ./vendor/bin/sail npm install
     ```
 
-6. Generate Laravel application key
+6. Generate Laravel Application Key
 
     ```
     ./vendor/bin/sail artisan key:generate
     ```
 
-7. Start npm
+7. Start NPM
 
     ```
     ./vendor/bin/sail npm run dev
@@ -55,32 +57,31 @@ Use `./vendor/bin/sail stop` to stop the server
 
 ### Without Docker
 
-3. Install Laravel dependencies
+3. Install Laravel Dependencies
 
     ```
     composer install --no-progress --no-interaction
     ```
 
-4. Install node dependencies
+4. Install Node Dependencies
 
     ```
     npm install
     ```
 
-5. Generate Laravel application key
+5. Generate Laravel Application Key
 
     ```
     php artisan key:generate
     ```
 
-6. Run migrations and seeders for the database
+6. Run Migrations and Seeders
 
     ```
-    php artisan migrate && \
-    php artisan db:seed
+    php artisan migrate && php artisan db:seed
     ```
 
-7. Start the app
+7. Start the App
 
     ```
     php artisan serve
