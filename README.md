@@ -11,25 +11,87 @@
 
 ## Installation
 
-1. Clone this repository - `git clone https://github.com/vix-4800/StoreSphere.git`
+1. Clone this repository
+
+    ```
+    git clone https://github.com/vix-4800/StoreSphere.git
+    ```
+
 2. Create _.env_ file and configure your environment (copy and rename .env.example)
 
 ### With Docker and Sail
 
-3. Run migrations for the database - `./vendor/bin/sail artisan migrate`
-4. Run seeders for the database - `./vendor/bin/sail artisan db:seed`
-5. Start the app - `./vendor/bin/sail up -d` and `./vendor/bin/sail npm run dev`
+3. Install Laravel dependencies
+
+    ```
+    docker run --rm -v $(pwd):/opt -w /opt laravelsail/php83-composer composer install --no-progress --no-interaction
+    ```
+
+4. Install node dependencies
+
+    ```
+    ./vendor/bin/sail npm install
+    ```
+
+5. Run migrations for the database
+
+    ```
+    ./vendor/bin/sail artisan migrate
+    ```
+
+6. Run seeders for the database
+
+    ```
+    ./vendor/bin/sail artisan db:seed
+    ```
+
+7. Start the app
+
+    ```
+    ./vendor/bin/sail up -d
+    ./vendor/bin/sail npm run dev
+    ```
 
 Use `./vendor/bin/sail stop` to stop the server
 
 ### Without Docker
 
-3. Install Laravel dependencies - `composer install --no-progress --no-interaction`
-4. Install node dependencies - `npm install`
-5. Generate Laravel application key - `php artisan key:generate`
-6. Run migrations for the database - `php artisan migrate`
-7. Run seeders for the database - `php artisan db:seed`
-8. Start the app - `php artisan serve` and `npm run dev`
+3. Install Laravel dependencies
+
+    ```
+    composer install --no-progress --no-interaction
+    ```
+
+4. Install node dependencies
+
+    ```
+    npm install
+    ```
+
+5. Generate Laravel application key
+
+    ```
+    php artisan key:generate
+    ```
+
+6. Run migrations for the database
+
+    ```
+    php artisan migrate
+    ```
+
+7. Run seeders for the database
+
+    ```
+    php artisan db:seed
+    ```
+
+8. Start the app
+
+    ```
+    php artisan serve
+    npm run dev
+    ```
 
 ## After installation
 
